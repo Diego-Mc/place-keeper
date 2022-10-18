@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../css/map.css" />
     <title>Place Keeper App</title>
   </head>
-  <body onload="initMap()">
+  <body onload="onInit()">
     <section class="container">
       <nav class="app-nav">
         <ul>
@@ -24,10 +24,17 @@
           <header>
             <h2>Saved Locations</h2>
           </header>
-          <article class="selected">
+          <main class="places-wrapper"></main>
+          <!-- <article class="selected">
             <header>
-              <h3>Name</h3>
-              <i class="bi bi-x"></i>
+              <h3
+                contenteditable
+                onblur="onUpdatePlace(123,this.innerText)"
+                onkeydown="onChangeName(event)"
+              >
+                Name
+              </h3>
+              <i class="bi bi-x" onclick="onRemovePlace(123)"></i>
             </header>
             <span>Saved: <time>16/10/22, 13:01</time></span>
           </article>
@@ -37,16 +44,18 @@
               <i class="bi bi-x"></i>
             </header>
             <span>Saved: <time>16/10/22, 13:01</time></span>
-          </article>
+          </article> -->
         </aside>
       </section>
     </section>
 
+    <script src="../js/services/storage.service.js"></script>
+    <script src="../js/services/place.service.js"></script>
+    <script src="../js/controllers/map.controller.js"></script>
     <script
       async
       defer
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCehZIGCRE74uvIp3P4NLoqP_cX8hzAS3U&callback=initMap"
     ></script>
-    <script src="../js/controllers/map.controller.js"></script>
   </body>
 </html>

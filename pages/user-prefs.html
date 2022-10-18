@@ -17,19 +17,21 @@
         </ul>
       </nav>
       <main class="bg-img">
-        <form>
+        <form onsubmit="onSetPreferences(event)">
           <header>
             <h2>Preferences</h2>
           </header>
-          <label>First name: <input type="text" /></label>
+          <label>First name: <input type="text" name="name" /></label>
           <label>
             Colors:
             <section class="colors">
-              <label>Background: <input type="color" /></label>
-              <label>Text: <input type="color" /></label>
+              <label>Background: <input type="color" name="bgColor" /></label>
+              <label>Text: <input type="color" name="color" /></label>
             </section>
           </label>
-          <label>Map start location: <input list="locations" /></label>
+          <label
+            >Map start location: <input list="locations" name="mapLocation"
+          /></label>
           <label class="zoom"
             >Zoom factor:
             <input
@@ -38,6 +40,7 @@
               max="21"
               oninput="this.title=this.value"
               value="9"
+              name="zoom"
           /></label>
           <button>Save</button>
         </form>
@@ -50,5 +53,9 @@
       <option value="School"></option>
       <option value="Store"></option>
     </datalist>
+
+    <script src="../js/services/storage.service.js"></script>
+    <script src="../js/services/user.service.js"></script>
+    <script src="../js/controllers/user-prefs.controller.js"></script>
   </body>
 </html>
