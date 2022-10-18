@@ -8,29 +8,47 @@
     <title>Place Keeper - Preferences</title>
   </head>
   <body>
-    <main>
-      <form>
-        <label>First name: <input type="text" /></label
-        ><label>Background color: <input type="color" /></label
-        ><label>Text color: <input type="color" /></label
-        ><label
-          >Zoom factor:
-          <input
-            type="range"
-            min="1"
-            max="21"
-            oninput="this.title=this.value"
-            value="9" /></label
-        ><label>Map start location: <input list="locations" /></label>
-        <button>Save</button>
+    <section class="wrapper">
+      <nav class="app-nav">
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="#">Preferences</a></li>
+          <li><a href="map.html">App</a></li>
+        </ul>
+      </nav>
+      <main class="bg-img">
+        <form>
+          <header>
+            <h2>Preferences</h2>
+          </header>
+          <label>First name: <input type="text" /></label>
+          <label>
+            Colors:
+            <section class="colors">
+              <label>Background: <input type="color" /></label>
+              <label>Text: <input type="color" /></label>
+            </section>
+          </label>
+          <label>Map start location: <input list="locations" /></label>
+          <label class="zoom"
+            >Zoom factor:
+            <input
+              type="range"
+              min="1"
+              max="21"
+              oninput="this.title=this.value"
+              value="9"
+          /></label>
+          <button>Save</button>
+        </form>
+      </main>
+    </section>
 
-        <datalist id="locations">
-          <option value="Home"></option>
-          <option value="Work"></option>
-          <option value="School"></option>
-          <option value="Store"></option>
-        </datalist>
-      </form>
-    </main>
+    <datalist id="locations">
+      <option value="Home"></option>
+      <option value="Work"></option>
+      <option value="School"></option>
+      <option value="Store"></option>
+    </datalist>
   </body>
 </html>

@@ -1,6 +1,10 @@
+@import url(fonts.css);
+@import url(../lib/bootstrap-icons/font/bootstrap-icons.css);
+
 body {
   padding: 0;
   margin: 0;
+  font-family: 'Roboto';
 }
 
 .app-nav {
@@ -10,6 +14,19 @@ body {
   position: relative;
 }
 
+.bg-img::after {
+  content: '';
+  background: url(../images/bg-img.jpg);
+  background-size: cover;
+  opacity: 0.1;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  position: absolute;
+  z-index: -1;
+}
+
 .app-nav ul {
   list-style-type: none;
   padding: 0;
@@ -17,6 +34,7 @@ body {
   display: flex;
   justify-content: space-around;
   width: 40vw;
+  min-width: 350px;
   position: relative;
   transform: translateY(-50%);
   top: 50%;

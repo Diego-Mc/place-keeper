@@ -9,15 +9,39 @@
   </head>
   <body onload="initMap()">
     <section class="container">
-      <main>
-        <section class="map"></section>
-      </main>
-      <aside>
-        <header>Saved Locations</header>
-        <article>Home</article>
-        <article>Store</article>
-      </aside>
+      <nav class="app-nav">
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="user-prefs.html">Preferences</a></li>
+          <li><a href="#">App</a></li>
+        </ul>
+      </nav>
+      <section class="app-container">
+        <main>
+          <section class="map"></section>
+        </main>
+        <aside>
+          <header>
+            <h2>Saved Locations</h2>
+          </header>
+          <article class="selected">
+            <header>
+              <h3>Name</h3>
+              <i class="bi bi-x"></i>
+            </header>
+            <span>Saved: <time>16/10/22, 13:01</time></span>
+          </article>
+          <article>
+            <header>
+              <h3>Store</h3>
+              <i class="bi bi-x"></i>
+            </header>
+            <span>Saved: <time>16/10/22, 13:01</time></span>
+          </article>
+        </aside>
+      </section>
     </section>
+
     <script
       async
       defer

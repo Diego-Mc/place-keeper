@@ -1,0 +1,41 @@
+/* serif */
+@font-face {
+  font-family: 'Lato';
+  src: url('../fonts/Lato/Lato-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'main-regular';
+  src: url('../fonts/Roboto/Roboto-Regular.ttf');
+}
+@font-face {
+  font-family: 'main-bold';
+  src: url('../fonts/Roboto/Roboto-Bold.ttf');
+}
+@font-face {
+  font-family: 'main-black';
+  src: url('../fonts/Roboto/Roboto-Black.ttf');
+}
+
+/* Rounded */
+@font-face {
+  font-family: 'Rubik';
+  src: url('../fonts/Rubik/Rubik-VariableFont_wght.ttf');
+}
+
+/* sans-serif */
+@font-face {
+  font-family: 'hero-italic';
+  src: url('../fonts/Merriweather/Merriweather-BlackItalic.ttf');
+}
+
+/* Fonts to use for displaying a small msg for user */
+@font-face {
+  font-family: 'Edu TAS';
+  src: url('../fonts/Edu_TAS/EduTASBeginner-VariableFont_wght.ttf');
+}
+
+@font-face {
+  font-family: 'Caveat';
+  src: url('../fonts/Caveat/Caveat-VariableFont_wght.ttf');
+}
