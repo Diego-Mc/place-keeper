@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/map.css" />
+    <title>Place Keeper App</title>
+  </head>
+  <body onload="initMap()">
+    <section class="container">
+      <main>
+        <section class="map"></section>
+      </main>
+      <aside>
+        <header>Saved Locations</header>
+        <article>Home</article>
+        <article>Store</article>
+      </aside>
+    </section>
+    <script
+      async
+      defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCehZIGCRE74uvIp3P4NLoqP_cX8hzAS3U&callback=initMap"
+    ></script>
+    <script src="../js/controllers/map.controller.js"></script>
+  </body>
+</html>

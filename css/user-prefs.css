@@ -1,0 +1,32 @@
+main {
+  width: 500px;
+  position: absolute;
+  transform: translateX(-50%);
+  left: 50%;
+  margin-top: 50px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  background-color: lightgray;
+  padding: 2rem;
+  border-radius: 1rem;
+  gap: 1rem;
+  align-items: center;
+}
+
+label {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+
+input {
+  width: 10rem;
+  height: 1.5rem;
+  padding: 0 0.4rem;
+  margin: 0;
+  box-sizing: border-box;
+}

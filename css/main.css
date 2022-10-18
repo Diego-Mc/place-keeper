@@ -1,0 +1,29 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.app-nav {
+  background-color: black;
+  color: white;
+  height: 3rem;
+  position: relative;
+}
+
+.app-nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: auto;
+  display: flex;
+  justify-content: space-around;
+  width: 40vw;
+  position: relative;
+  transform: translateY(-50%);
+  top: 50%;
+}
+
+a,
+a:visited {
+  color: unset;
+  text-decoration: none;
+}

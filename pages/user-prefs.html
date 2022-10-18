@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/user-prefs.css" />
+    <title>Place Keeper - Preferences</title>
+  </head>
+  <body>
+    <main>
+      <form>
+        <label>First name: <input type="text" /></label
+        ><label>Background color: <input type="color" /></label
+        ><label>Text color: <input type="color" /></label
+        ><label
+          >Zoom factor:
+          <input
+            type="range"
+            min="1"
+            max="21"
+            oninput="this.title=this.value"
+            value="9" /></label
+        ><label>Map start location: <input list="locations" /></label>
+        <button>Save</button>
+
+        <datalist id="locations">
+          <option value="Home"></option>
+          <option value="Work"></option>
+          <option value="School"></option>
+          <option value="Store"></option>
+        </datalist>
+      </form>
+    </main>
+  </body>
+</html>
