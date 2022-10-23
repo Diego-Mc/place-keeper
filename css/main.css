@@ -1,6 +1,18 @@
 @import url(fonts.css);
 @import url(../lib/bootstrap-icons/font/bootstrap-icons.css);
 
+:root {
+  --primary: #000000;
+  --invalid: #cccccc;
+  --secondary: #ffffff;
+  --modal-bg: #f7f8f9;
+  --special: #0075ff;
+  /* Auto create bt applying opacity to modal-bg & using  */
+  --modal-unselected: ;
+  --primary-opacity: ;
+  --primary-more-opacity: ;
+}
+
 body {
   padding: 0;
   margin: 0;
@@ -8,8 +20,8 @@ body {
 }
 
 .app-nav {
-  background-color: black;
-  color: white;
+  background-color: var(--primary);
+  color: var(--secondary);
   height: 3rem;
   position: relative;
 }
@@ -38,10 +50,30 @@ body {
   position: relative;
   transform: translateY(-50%);
   top: 50%;
+  height: 100%;
+}
+
+.app-nav li {
+  display: flex;
+  flex-direction: column;
 }
 
 a,
 a:visited {
-  color: unset;
+  color: var(--primary);
   text-decoration: none;
+}
+
+.app-nav a,
+.app-nav a:visited {
+  color: var(--secondary);
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.app-nav a:active,
+.app-nav a:hover {
+  color: var(--secondary);
+  opacity: 0.8;
 }

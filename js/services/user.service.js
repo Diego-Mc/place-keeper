@@ -11,13 +11,19 @@ function initPreferences() {
   if (!gPreferences) {
     gPreferences = {
       name: 'Stranger',
-      bgColor: '#ffffff',
-      color: '#000000',
+      secondaryColor: '#ffffff',
+      primaryColor: '#000000',
+      modalBg: '#f7f8f9',
       mapLocation: { lat: 0, lng: 0 },
       zoom: 10,
     }
   }
   saveToStorage(PREF_KEY, gPreferences)
+}
+
+function resetPreferences() {
+  localStorage.setItem(PREF_KEY, null)
+  initPreferences()
 }
 
 function setPreferences(preferences) {

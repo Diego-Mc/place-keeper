@@ -4,20 +4,35 @@ var gMap = {
 }
 
 function onInit() {
+  renderColors() //from user-pref
   renderPlaces()
+  renderSelection()
 }
 
 function initMap() {
-  const defaultLoc = { lat: -25.344, lng: 131.031 }
+  const { mapLocation = { lat: -25, lng: 131 }, zoom = 6 } = getPreferences()
 
-  // The map, centered at Uluru
   gMap.map = new google.maps.Map(document.querySelector('.map'), {
-    zoom: 4,
-    center: defaultLoc,
+    zoom,
+    center: mapLocation,
   })
 
   gMap.map.addListener('click', onAddPlace)
   getPlaces().forEach(addMarker)
+}
+
+function renderSelection() {
+  const { mapLocation } = getPreferences()
+  if (!mapLocation) return
+
+  const elLocation = [...document.querySelectorAll('[data-id]')].find((el) => {
+    const { id } = el.dataset
+    const { lat, lng } = getPlace(id)
+    return lat === mapLocation.lat && lng === mapLocation.lng
+  })
+  if (!elLocation) return
+
+  elLocation.onclick()
 }
 
 function onRemovePlace(ev, id) {
@@ -28,16 +43,26 @@ function onRemovePlace(ev, id) {
 }
 
 function onAddPlace({ latLng }) {
-  const place = {
-    id: Date.now().toString(),
-    lat: latLng.lat(),
-    lng: latLng.lng(),
-    name: prompt('Place name?'),
-  }
-  console.log(place)
-  addPlace(place)
-  addMarker(place)
-  renderPlaces()
+  const [lat, lng] = [latLng.lat(), latLng.lng()]
+  centerMap(lat, lng)
+  setTimeout(() => {
+    const place = {
+      id: Date.now().toString(),
+      lat,
+      lng,
+      name: prompt('Place name?'),
+    }
+    console.log(place)
+    addPlace(place)
+    addMarker(place)
+    renderPlaces()
+  }, 100)
+}
+
+function onCenter() {
+  navigator.geolocation.getCurrentPosition(({ coords }) =>
+    centerMap(coords.latitude, coords.longitude)
+  )
 }
 
 function onUpdatePlace(id, newName) {
@@ -49,8 +74,8 @@ function onChangeName(ev) {
 }
 
 function onSelectPlace(ev, el, id) {
-  //center map
-  console.log(ev, el, id)
+  setLastSelected(id)
+
   const elSelected = document.querySelector('article.selected')
   elSelected && elSelected.classList.remove('selected')
   el.classList.add('selected')
@@ -64,6 +89,10 @@ function renderPlaces() {
   const placesHTML = places.map(_renderPlace).join('')
 
   document.querySelector('.places-wrapper').innerHTML = placesHTML
+}
+
+function centerMap(lat, lng) {
+  gMap.map.setCenter(new google.maps.LatLng(lat, lng))
 }
 
 function addMarker({ lat, lng }) {
@@ -81,9 +110,28 @@ function removeMarker({ lat, lng }) {
   marker.setMap(null)
 }
 
+function stopPropagation(ev) {
+  ev.stopPropagation()
+}
+
+function onGetCsv(el) {
+  const csvStart = 'data:text/csv;charset=utf-8,'
+  const csvHeaders = 'id,lat,lng,name,createdAt\n'
+  const csvData = getPlaces()
+    .map(
+      ({ id, lat, lng, name, createdAt }) =>
+        `${id},${lat},${lng},${name},${createdAt}`
+    )
+    .join('\n')
+
+  console.log(el.href, csvStart + csvHeaders + csvData)
+
+  el.href = csvStart + csvHeaders + csvData
+}
+
 function _renderPlace({ id, name, createdAt }) {
   return `
-    <article onclick="onSelectPlace(event,this,'${id}')">
+    <article data-id=${id} onclick="onSelectPlace(event,this,'${id}')">
       <header>
         <h3
           contenteditable
@@ -97,10 +145,6 @@ function _renderPlace({ id, name, createdAt }) {
       </header>
       <span>Saved: <time>${_formatTime(createdAt)}</time></span>
     </article>`
-}
-
-function stopPropagation(ev) {
-  ev.stopPropagation()
 }
 
 function _formatTime(date) {

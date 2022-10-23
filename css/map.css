@@ -18,7 +18,7 @@ aside {
   gap: 1rem;
   flex: 1 0 0;
   padding: 1rem;
-  background-color: #f7f8f9;
+  background-color: var(--modal-bg);
   border-radius: 0.6rem;
   margin: 1rem;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
@@ -26,11 +26,29 @@ aside {
   margin-left: 0;
 }
 
+aside header {
+  position: relative;
+}
+
 aside header h2 {
   text-align: center;
   font-family: 'main-bold';
   margin: 0.4rem 0;
   opacity: 0.8;
+  color: var(--primary);
+}
+
+aside header a.csv-btn {
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 1.4rem;
+}
+
+aside header a.csv-btn:hover {
+  color: black;
 }
 
 article {
@@ -43,13 +61,14 @@ article {
   justify-content: space-between;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   border-radius: 0.6rem;
-  border-bottom: 4px solid #e6e6e6;
+  border-bottom: 4px solid var(--modal-unselected);
   flex-shrink: 0;
   cursor: pointer;
+  color: var(--primary);
 }
 
 article.selected {
-  border-bottom: 4px solid rgb(0, 0, 0, 0.8);
+  border-bottom: 4px solid var(--special);
 }
 
 article h3 {
@@ -78,6 +97,7 @@ article span {
 
 main {
   flex: 2 0 0;
+  position: relative;
 }
 
 .map {
@@ -86,6 +106,26 @@ main {
   margin: 1rem;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.target-icon {
+  position: absolute;
+  bottom: 225px;
+  right: 26px;
+  width: 40px;
+  height: 40px;
+  background-color: white;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: rgb(0 0 0 / 30%) 0px 1px 4px -1px;
+}
+
+.target-icon img {
+  width: 36px;
+  height: 36px;
 }
 
 .bi-x {
@@ -97,4 +137,14 @@ main {
   flex-direction: column;
   gap: 1rem;
   overflow-y: scroll;
+}
+
+@media screen and (max-width: 850px) {
+  .app-container {
+    flex-direction: column;
+  }
+
+  .app-container aside {
+    max-width: none;
+  }
 }

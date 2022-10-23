@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../css/user-prefs.css" />
     <title>Place Keeper - Preferences</title>
   </head>
-  <body>
+  <body onload="onInit()">
     <section class="wrapper">
       <nav class="app-nav">
         <ul>
@@ -25,13 +25,42 @@
           <label>
             Colors:
             <section class="colors">
-              <label>Background: <input type="color" name="bgColor" /></label>
-              <label>Text: <input type="color" name="color" /></label>
+              <label
+                >Primary:
+                <input
+                  type="color"
+                  name="primaryColor"
+                  oninput="setCssVariable('--primary',this.value)"
+              /></label>
+              <label
+                >Secondary:
+                <input
+                  type="color"
+                  name="secondaryColor"
+                  oninput="setCssVariable('--secondary',this.value)"
+              /></label>
+              <label
+                >Modals:
+                <input
+                  type="color"
+                  name="modalBg"
+                  oninput="setCssVariable('--modal-bg',this.value)"
+              /></label>
             </section>
           </label>
           <label
-            >Map start location: <input list="locations" name="mapLocation"
-          /></label>
+            >Map start location:
+            <input
+              list="locations"
+              name="mapLocation"
+              placeholder="x,y"
+              oninput="onMapLocationInput(this.value)"
+            />
+            <small
+              >Enter a selected state or enter coords for starting
+              location.</small
+            >
+          </label>
           <label class="zoom"
             >Zoom factor:
             <input
@@ -42,7 +71,12 @@
               value="9"
               name="zoom"
           /></label>
-          <button>Save</button>
+          <section class="btns">
+            <button type="submit">Save</button>
+            <button type="button" onclick="onResetPreferences()">
+              Restore Default
+            </button>
+          </section>
         </form>
       </main>
     </section>
@@ -54,8 +88,10 @@
       <option value="Last selected saved location"></option>
     </datalist>
 
+    <script src="../js/services/util.service.js"></script>
     <script src="../js/services/storage.service.js"></script>
     <script src="../js/services/user.service.js"></script>
+    <script src="../js/services/place.service.js"></script>
     <script src="../js/controllers/user-prefs.controller.js"></script>
   </body>
 </html>

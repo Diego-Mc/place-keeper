@@ -18,33 +18,19 @@
       </nav>
       <section class="app-container">
         <main>
+          <div class="target-icon" onclick="onCenter()">
+            <img src="../images/target.svg" alt="" />
+          </div>
           <section class="map"></section>
         </main>
         <aside>
           <header>
             <h2>Saved Locations</h2>
+            <a href="#" onclick="onGetCsv(this)" class="csv-btn">
+              <i class="bi bi-filetype-csv"></i>
+            </a>
           </header>
           <main class="places-wrapper"></main>
-          <!-- <article class="selected">
-            <header>
-              <h3
-                contenteditable
-                onblur="onUpdatePlace(123,this.innerText)"
-                onkeydown="onChangeName(event)"
-              >
-                Name
-              </h3>
-              <i class="bi bi-x" onclick="onRemovePlace(123)"></i>
-            </header>
-            <span>Saved: <time>16/10/22, 13:01</time></span>
-          </article>
-          <article>
-            <header>
-              <h3>Store</h3>
-              <i class="bi bi-x"></i>
-            </header>
-            <span>Saved: <time>16/10/22, 13:01</time></span>
-          </article> -->
         </aside>
       </section>
     </section>
@@ -52,6 +38,7 @@
     <script src="../js/services/storage.service.js"></script>
     <script src="../js/services/place.service.js"></script>
     <script src="../js/services/user.service.js"></script>
+    <script src="../js/controllers/user-prefs.controller.js"></script>
     <script src="../js/controllers/map.controller.js"></script>
     <script
       async

@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="css/index.css" />
     <title>Place Keeper</title>
   </head>
-  <body>
+  <body onload="onInit()">
     <section class="container">
       <nav class="app-nav">
         <ul>
@@ -18,7 +18,7 @@
       </nav>
       <main class="bg-img">
         <header>
-          <h1>Hello Stranger!</h1>
+          <h1>Hello <span class="username">Stranger</span>!</h1>
           <nav class="cta-btns">
             <a href="pages/user-prefs.html">Set preferences</a>
             <a class="primary-btn" href="pages/map.html">Open app</a>
@@ -26,5 +26,10 @@
         </header>
       </main>
     </section>
+
+    <script src="js/services/storage.service.js"></script>
+    <script src="js/services/user.service.js"></script>
+    <script src="js/controllers/user-prefs.controller.js"></script>
+    <script src="js/controllers/index.controller.js"></script>
   </body>
 </html>
